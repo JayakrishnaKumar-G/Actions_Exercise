@@ -28,7 +28,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ts-app-build-${{ matrix.node }}
-          path: ACTIONS_EXERCISE/dist/
+          path: ./dist
 
   test:
     needs: build
@@ -52,7 +52,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: ts-app-build-18
-          path: ACTIONS_EXERCISE/dist/
+          path: ./dist
       - name: Build Docker image
         run: |
           docker build -t ts-app-demo .
