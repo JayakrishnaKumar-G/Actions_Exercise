@@ -71,8 +71,8 @@ jobs:
   deploy:
     needs: dockerjob
     runs-on: ubuntu-latest
+    environment: ${{ github.ref == 'refs/heads/main' && 'prod' || 'dev' }}
     env:
-      environment: ${{ github.ref == 'refs/heads/main' && 'prod' || 'dev' }}
       API_URL: ${{ vars.API_URL }}
       DB_NAME: ${{ vars.DB_NAME }}
     steps:
