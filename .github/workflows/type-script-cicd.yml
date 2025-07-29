@@ -79,7 +79,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Deploy to Print
         run: |
-          echo "Deploying to ${{env.environment}} server..."
+          echo "Deploying to ${{github.environment}} server..."
           echo "API_URL: ${{ env.API_URL }}"
           echo "DB_NAME: ${{ env.DB_NAME }}"
           echo "Deployment complete."
