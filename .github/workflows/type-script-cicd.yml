@@ -43,7 +43,7 @@ jobs:
         run: npm test
 
   dockerjob:
-    needs: build, test
+    needs: [build, test]
     environment: ${{ github.ref == 'refs/heads/main' && 'prod' || 'dev' }}
     runs-on: ubuntu-latest
     steps:
@@ -71,8 +71,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       environment: ${{ github.ref == 'refs/heads/main' && 'prod' || 'dev' }}
-      API_URL: ${{ env.API_URL }}
-      DB_NAME: ${{ env.DB_NAME }}
+      API_URL: ${{ vars.API_URL }}
+      DB_NAME: ${{ vars.DB_NAME }}
     steps:
       - uses: actions/checkout@v4
       - name: Deploy to Print
