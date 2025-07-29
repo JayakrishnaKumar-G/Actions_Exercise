@@ -73,13 +73,14 @@ jobs:
     runs-on: ubuntu-latest
     environment: ${{ github.ref == 'refs/heads/main' && 'prod' || 'dev' }}
     env:
+      environement: ${{ github.ref == 'refs/heads/main' && 'prod' || 'dev' }}
       API_URL: ${{ vars.API_URL }}
       DB_NAME: ${{ vars.DB_NAME }}
     steps:
       - uses: actions/checkout@v4
       - name: Deploy to Print
         run: |
-          echo "Deploying to ${{github.environment}} server..."
+          echo "Deploying to ${{ env.ENVIRONMENT }} server..."
           echo "API_URL: ${{ env.API_URL }}"
           echo "DB_NAME: ${{ env.DB_NAME }}"
           echo "Deployment complete."
