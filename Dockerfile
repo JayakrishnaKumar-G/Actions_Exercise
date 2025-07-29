@@ -4,17 +4,10 @@ FROM node:18-alpine
 WORKDIR /src
 
 # Copy package files first to leverage Docker cache
-COPY package*.json ./
+COPY . .
 
 # Install dependencies
 RUN npm ci --omit=dev
 
-# Copy source files
-COPY tsconfig.json .
-COPY src ./src
-
-# Build TypeScript
-RUN npm run build
-
 # Use CMD instead of RUN for the start command
-CMD ["npm", "start"]
+CMD ["npm" ,"run" , "start"]
